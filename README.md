@@ -1,2 +1,2 @@
 # nyala
-Nyala - A real-time data analytics platform for IOT devices
+A real-time data analytics platform for IoT devices
