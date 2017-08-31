@@ -1,11 +1,8 @@
-import csv
 import json
 
-#def csv_queue(path):
 
 def csv_pipeline(csv, fieldnames):
-    csvfile = open('C:\\Users\\lbrad23105\\Desktop\\test.csv', 'r')
-    reader = csv.DictReader(csvfile, fieldnames)
+    reader = csv.DictReader(csv, fieldnames)
     j = []
     for row in reader:
         if test_dictionary(dict(row), fieldnames) is True:
