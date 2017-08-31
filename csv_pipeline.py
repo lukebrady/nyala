@@ -8,15 +8,15 @@ import csv
 # @returns json_array: Array of JSON objects that will entered into database.
 def csv_to_json(csv_obj, fieldnames):
     reader = csv.DictReader(csv_obj, fieldnames)
-    json_array = []
+    dict_array = []
     for row in reader:
         if test_dictionary(dict(row), fieldnames) is True:
             dumped_row = json.dumps(row)
-            json_array.append(dumped_row)
+            dict_array.append(row)
         else:
             return
-    print(json_array)
-    return json_array
+    print(dict_array)
+    return dict_array
 
 
 # Helper function that will test if all fields are filled out.
