@@ -5,22 +5,24 @@ import csv
 # Pipeline that takes an in-memory CSV object and converts it to JSON.
 # @param csv_obj: In-memory CSV file that will be converted to JSON.
 # @param fieldnames: The keys used in the JSON document.
-def csv_pipeline(csv_obj, fieldnames):
+# @returns json_array: Array of JSON objects that will entered into database.
+def csv_to_json(csv_obj, fieldnames):
     reader = csv.DictReader(csv_obj, fieldnames)
-    dict_array = []
+    json_array = []
     for row in reader:
         if test_dictionary(dict(row), fieldnames) is True:
             dumped_row = json.dumps(row)
-            dict_array.append(dumped_row)
+            json_array.append(dumped_row)
         else:
             return
-    print(dict_array)
-    return dict_array
+    print(json_array)
+    return json_array
 
 
 # Helper function that will test if all fields are filled out.
 # @param dictionary: The dictionary object that will be tested within the function.
 # @param fieldnames: Values that the function will test against to check existence.
+# @returns boolean: Returns True if all elements exist. Returns false if not.
 def test_dictionary(dictionary, fieldnames):
     for x in range(0, len(fieldnames) - 1):
         if dictionary.get(fieldnames[x]) is None:
@@ -31,7 +33,7 @@ def test_dictionary(dictionary, fieldnames):
 
 def main():
     c = open("C:\\Users\\lbrad23105\\Desktop\\test.csv", "r")
-    csv_pipeline(c, ("Width","Height","Length","Area"))
+    csv_to_json(c, ("Width","Height","Length","Area"))
 
 main()
 
